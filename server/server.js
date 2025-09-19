@@ -13,9 +13,10 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://*.vercel.app',
-  'https://riskwatch-frontend.vercel.app',
-  'https://riskwatch-frontend-*.vercel.app'
+  'https://*.netlify.app',
+  'https://*.netlify.com',
+  'https://riskwatch-frontend.netlify.app',
+  'https://riskwatch-frontend-*.netlify.app'
 ];
 
 app.use(cors({
