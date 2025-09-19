@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://riskwatch-backend.onrender.com';
 
 // Auth Service
 export const register = async (username, email, password) => {
-  const response = await axios.post(`${API_URL}/auth/register`, {
+  const response = await axios.post(`${API_URL}/api/auth/register`, {
     username,
     email,
     password
@@ -13,7 +13,7 @@ export const register = async (username, email, password) => {
 };
 
 export const login = async (email, password) => {
-  const response = await axios.post(`${API_URL}/auth/login`, {
+  const response = await axios.post(`${API_URL}/api/auth/login`, {
     email,
     password
   });
@@ -26,7 +26,7 @@ export const checkTransaction = async (transactionData) => {
   if (!token) {
     throw new Error('Authentication required');
   }
-  const response = await axios.post(`${API_URL}/fraud/check`, transactionData, {
+  const response = await axios.post(`${API_URL}/api/fraud/check`, transactionData, {
     headers: { 
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export const checkTransaction = async (transactionData) => {
 
 export const getTransactions = async (userId) => {
   const token = localStorage.getItem('token');
-  const response = await axios.get(`${API_URL}/fraud/transactions/${userId}`, {
+  const response = await axios.get(`${API_URL}/api/fraud/transactions/${userId}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   return response.data;
