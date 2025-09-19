@@ -62,6 +62,7 @@ A comprehensive credit card fraud detection application built with React fronten
 ### Backend Deployment (Render - 100% Free)
 
 1. **Set up MongoDB Atlas (Free)**
+
    - Go to [mongodb.com/atlas](https://www.mongodb.com/atlas)
    - Sign up for free account
    - Create a new cluster (choose the free M0 tier)
@@ -69,6 +70,7 @@ A comprehensive credit card fraud detection application built with React fronten
    - Get your connection string (looks like: `mongodb+srv://username:password@cluster.mongodb.net/creditcard-fraud`)
 
 2. **Deploy to Render**
+
    - Go to [render.com](https://render.com)
    - Sign up with your GitHub account (no credit card required)
    - Click "New +" → "Web Service"
@@ -77,13 +79,15 @@ A comprehensive credit card fraud detection application built with React fronten
    - **Important**: Set the root directory to `server`
 
 3. **Configure Render Settings**
+
    - **Name**: `riskwatch-backend`
    - **Environment**: `Node`
    - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
+   - **Start Command**: `node server.js`
    - **Plan**: Free
 
 4. **Set Environment Variables in Render**
+
    - Go to Environment tab
    - Add these variables:
      ```
@@ -97,20 +101,24 @@ A comprehensive credit card fraud detection application built with React fronten
 ### Frontend Deployment (Vercel - 100% Free)
 
 1. **Sign up for Vercel**
+
    - Go to [vercel.com](https://vercel.com)
    - Sign up with your GitHub account (no credit card required)
 
 2. **Import Project**
+
    - Click "New Project"
    - Import your RiskWatch repository
    - Set the root directory to `client`
 
 3. **Configure Build Settings**
+
    - Build Command: `npm run build`
    - Output Directory: `dist`
    - Install Command: `npm install`
 
 4. **Set Environment Variables**
+
    - Add `VITE_API_URL` with your Render backend URL
    - Example: `https://riskwatch-backend.onrender.com`
 
