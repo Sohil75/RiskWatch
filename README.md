@@ -13,6 +13,7 @@ A comprehensive credit card fraud detection application built with React fronten
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - React 19
 - Vite
 - Material-UI (MUI)
@@ -20,6 +21,7 @@ A comprehensive credit card fraud detection application built with React fronten
 - Axios
 
 ### Backend
+
 - Node.js
 - Express.js
 - MongoDB with Mongoose
@@ -29,21 +31,24 @@ A comprehensive credit card fraud detection application built with React fronten
 ## 📦 Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Sohil75/RiskWatch.git
    cd RiskWatch
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm run install:all
    ```
 
 3. **Set up environment variables**
+
    ```bash
    # Copy the example environment file
    cp server/env.example server/.env
-   
+
    # Edit server/.env with your configuration
    ```
 
@@ -52,39 +57,48 @@ A comprehensive credit card fraud detection application built with React fronten
    npm run dev
    ```
 
-## 🌐 Deployment
+## 🌐 Free Deployment Guide
 
-### Backend Deployment (Railway)
+### Backend Deployment (Render - 100% Free)
 
-1. **Sign up for Railway**
-   - Go to [railway.app](https://railway.app)
-   - Sign up with your GitHub account
+1. **Set up MongoDB Atlas (Free)**
+   - Go to [mongodb.com/atlas](https://www.mongodb.com/atlas)
+   - Sign up for free account
+   - Create a new cluster (choose the free M0 tier)
+   - Create a database user
+   - Get your connection string (looks like: `mongodb+srv://username:password@cluster.mongodb.net/creditcard-fraud`)
 
-2. **Deploy from GitHub**
-   - Click "New Project"
-   - Select "Deploy from GitHub repo"
+2. **Deploy to Render**
+   - Go to [render.com](https://render.com)
+   - Sign up with your GitHub account (no credit card required)
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
    - Choose your RiskWatch repository
-   - Select the `server` folder as the root directory
+   - **Important**: Set the root directory to `server`
 
-3. **Set Environment Variables**
-   - Go to your project settings
-   - Add these environment variables:
+3. **Configure Render Settings**
+   - **Name**: `riskwatch-backend`
+   - **Environment**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Plan**: Free
+
+4. **Set Environment Variables in Render**
+   - Go to Environment tab
+   - Add these variables:
      ```
-     MONGODB_URI=your-mongodb-connection-string
-     JWT_SECRET=your-super-secret-jwt-key
+     MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/creditcard-fraud
+     JWT_SECRET=your-super-secret-jwt-key-make-it-very-long-and-random
      NODE_ENV=production
      ```
 
-4. **Add MongoDB Database**
-   - In Railway dashboard, click "New"
-   - Select "Database" → "MongoDB"
-   - Connect it to your backend service
+5. **Deploy**: Click "Create Web Service" - Render will automatically deploy!
 
-### Frontend Deployment (Vercel)
+### Frontend Deployment (Vercel - 100% Free)
 
 1. **Sign up for Vercel**
    - Go to [vercel.com](https://vercel.com)
-   - Sign up with your GitHub account
+   - Sign up with your GitHub account (no credit card required)
 
 2. **Import Project**
    - Click "New Project"
@@ -97,12 +111,15 @@ A comprehensive credit card fraud detection application built with React fronten
    - Install Command: `npm install`
 
 4. **Set Environment Variables**
-   - Add `VITE_API_URL` with your Railway backend URL
-   - Example: `https://your-app.railway.app`
+   - Add `VITE_API_URL` with your Render backend URL
+   - Example: `https://riskwatch-backend.onrender.com`
+
+5. **Deploy**: Click "Deploy" - Vercel will automatically build and deploy!
 
 ## 🔧 Environment Variables
 
-### Backend (.env)
+### Backend (.env for local development)
+
 ```env
 MONGODB_URI=mongodb://localhost:27017/creditcard-fraud
 JWT_SECRET=your-super-secret-jwt-key-here
@@ -110,9 +127,18 @@ PORT=5000
 NODE_ENV=development
 ```
 
-### Frontend (Vercel)
+### Backend (Render - Production)
+
 ```env
-VITE_API_URL=https://your-backend-url.railway.app
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/creditcard-fraud
+JWT_SECRET=your-super-secret-jwt-key-make-it-very-long-and-random
+NODE_ENV=production
+```
+
+### Frontend (Vercel)
+
+```env
+VITE_API_URL=https://your-backend-name.onrender.com
 ```
 
 ## 📱 Usage
@@ -134,11 +160,13 @@ VITE_API_URL=https://your-backend-url.railway.app
 ## 📊 API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - User registration
 - `POST /api/auth/login` - User login
 - `GET /api/auth/health` - Health check
 
 ### Fraud Detection
+
 - `POST /api/fraud/check` - Check transaction for fraud
 - `GET /api/fraud/history` - Get fraud detection history
 
@@ -157,6 +185,7 @@ This project is licensed under the ISC License.
 ## 👨‍💻 Author
 
 **Sohil75**
+
 - GitHub: [@Sohil75](https://github.com/Sohil75)
 
 ## 🆘 Support
