@@ -61,6 +61,15 @@ mongoose.connection.on('disconnected', () => {
   connectDB();
 });
 
+// Health check endpoint
+app.get('/api/auth/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    message: 'Server is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/fraud', fraudRoutes);
