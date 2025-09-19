@@ -15,6 +15,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://*.netlify.app',
   'https://*.netlify.com',
+  'https://resplendent-tiramisu-ddc375.netlify.app',
   'https://riskwatch-frontend.netlify.app',
   'https://riskwatch-frontend-*.netlify.app'
 ];
@@ -23,6 +24,11 @@ app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
+    
+    // Allow all Netlify domains
+    if (origin.includes('.netlify.app') || origin.includes('.netlify.com')) {
+      return callback(null, true);
+    }
     
     // Check if origin is in allowed list
     const isAllowed = allowedOrigins.some(allowedOrigin => {
