@@ -119,8 +119,13 @@ A comprehensive credit card fraud detection application built with React fronten
 
 4. **Set Environment Variables**
 
-   - Add `VITE_API_URL` with your Render backend URL
-   - Example: `https://riskwatch-backend.onrender.com`
+   - Go to your project settings in Vercel
+   - Click on "Environment Variables" tab
+   - Add a new variable:
+     - **Name**: `VITE_API_URL`
+     - **Value**: `https://riskwatch-backend.onrender.com` (replace with your actual Render URL)
+     - **Environment**: Production, Preview, Development (select all)
+   - Click "Save"
 
 5. **Deploy**: Click "Deploy" - Vercel will automatically build and deploy!
 
