@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://riskwatch-backend.onrender.com';
+const API_URL = 'https://riskwatch-1.onrender.com';
 
 // Auth Service
 export const register = async (username, email, password) => {

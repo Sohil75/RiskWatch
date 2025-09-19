@@ -7,11 +7,13 @@ const router = express.Router();
 // Register
 router.post('/register', async (req, res) => {
   try {
+    console.log('Register attempt:', req.body);
     const { username, email, password } = req.body;
 
     // Check if user exists
     let user = await User.findOne({ email });
     if (user) {
+      console.log('User already exists:', email);
       return res.status(400).json({ message: 'User already exists' });
     }
 
@@ -27,6 +29,7 @@ router.post('/register', async (req, res) => {
     });
 
     await user.save();
+    console.log('User registered successfully:', email);
 
     // Create JWT token
     const token = jwt.sign(
@@ -37,24 +40,28 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({ token });
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    console.error('Register error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
 
 // Login
 router.post('/login', async (req, res) => {
   try {
+    console.log('Login attempt:', req.body);
     const { email, password } = req.body;
 
     // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
+      console.log('User not found:', email);
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     // Verify password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
+      console.log('Password mismatch for user:', email);
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
@@ -65,9 +72,11 @@ router.post('/login', async (req, res) => {
       { expiresIn: '24h' }
     );
 
+    console.log('Login successful for user:', email);
     res.json({ token, userId: user.id });
   } catch (error) {
-    res.status(500).json({ message: 'Server error' });
+    console.error('Login error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
 

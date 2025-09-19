@@ -11,12 +11,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: [
-    'http://localhost:5173', // Vite dev server
-    'http://localhost:3000', // Alternative dev port
-    'https://*.vercel.app', // Vercel deployments
-    'https://riskwatch-frontend.vercel.app' // Your specific Vercel URL
-  ],
+  origin: true, // Allow all origins for development
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
